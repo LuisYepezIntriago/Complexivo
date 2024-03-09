@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Médicos</title>
+    <!-- Estilos internos para la página -->
+    <style>
+        /* Estilos para la tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        /* Estilos para el botón */
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #4CAF50;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #388E3C;
+        }
+        
+        /* Estilos para el contenedor del botón */
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Médicos</h1>
+    <!-- Si hay médicos registrados, los mostramos en una tabla -->
+    <% if (data.length > 0) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Especialidad</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iteramos sobre los médicos y generamos una fila para cada uno -->
+                <% data.forEach(function(medico) { %>
+                    <tr>
+                        <td><%= medico.id %></td>
+                        <td><%= medico.nombre %></td>
+                        <td><%= medico.especialidad %></td>
+                        <td><%= medico.telefono %></td>
+                        <td><%= medico.email %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <!-- Si no hay médicos registrados, mostramos un mensaje -->
+    <% } else { %>
+        <p>No hay médicos registrados.</p>
+    <% } %>
+    <!-- Botón para volver a la ventana principal -->
+    <div class="button-container"> 
+        <a class="button" href="/">Ventana Principal</a> 
+    </div>
+</body>
+</html>

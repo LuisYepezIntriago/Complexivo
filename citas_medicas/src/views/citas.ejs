@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Citas</title>
+    <!-- Estilos internos para la página -->
+    <style>
+        /* Estilos para la tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #0066cc;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #e6f7ff;
+        }
+        
+        /* Estilos para el botón */
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #0066cc;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #004d99;
+        }
+        
+        /* Estilos para el contenedor del botón */
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Citas</h1>
+    <!-- Si hay citas, las mostramos en una tabla -->
+    <% if (data.length > 0) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>ID del Paciente</th>
+                    <th>ID del Médico</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iteramos sobre las citas y generamos una fila para cada una -->
+                <% data.forEach(function(cita) { %>
+                    <tr>
+                        <td><%= cita.id %></td>
+                        <td><%= cita.fecha %></td>
+                        <td><%= cita.hora %></td>
+                        <td><%= cita.paciente_id %></td>
+                        <td><%= cita.medico_id %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <!-- Si no hay citas, mostramos un mensaje -->
+    <% } else { %>
+        <p>No hay citas programadas.</p>
+    <% } %>
+    <!-- Botón para volver a la ventana principal -->
+    <div class="button-container"> 
+        <a class="button" href="/">Ventana Principal</a> 
+    </div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pacientes</title>
+    <!-- Estilos internos para la página -->
+    <style>
+        /* Estilos para la tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #00802b;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #d9f2d9;
+        }
+        /* Estilos para el botón */
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #4CAF50;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #388E3C;
+        }
+        /* Estilos para centrar el botón */
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pacientes</h1>
+    <!-- Si hay pacientes registrados, los mostramos en una tabla -->
+    <% if (data.length > 0) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Direccion</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iteramos sobre los pacientes y generamos una fila para cada uno -->
+                <% data.forEach(function(paciente) { %>
+                    <tr>
+                        <td><%= paciente.id %></td>
+                        <td><%= paciente.nombre %></td>
+                        <td><%= paciente.direccion %></td>
+                        <td><%= paciente.telefono %></td>
+                        <td><%= paciente.email %></td>
+                        <td>
+                            <!-- Enlaces para editar y eliminar el paciente -->
+                            <a href="/pacientes/edit/<%= paciente.id %>">Editar</a>
+                            <a href="/pacientes/delete/<%= paciente.id %>">Eliminar</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <!-- Si no hay pacientes registrados, mostramos un mensaje -->
+    <% } else { %>
+        <p>No hay pacientes registrados.</p>
+    <% } %>
+    <!-- Botones para volver a la ventana principal y para crear un nuevo paciente -->
+    <div class="button-container"> 
+        <a class="button" href="/">Ventana Principal</a> 
+        <a class="button" href="/pacientes/new">Crear nuevo paciente</a> 
+    </div>
+</body>
+</html>

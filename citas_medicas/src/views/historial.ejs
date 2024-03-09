@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Historial</title>
+    <!-- Estilos internos para la página -->
+    <style>
+        /* Estilos para el cuerpo y el encabezado */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #333;
+        }
+        /* Estilos para la tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        /* Estilos para el botón */
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #4CAF50;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #388E3C;
+        }
+        
+        /* Estilos para el contenedor del botón */
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Historial</h1>
+    <!-- Si hay registros en el historial, los mostramos en una tabla -->
+    <% if (data.length > 0) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cita_Id</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Paciente_Id</th>
+                    <th>Medico_ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iteramos sobre los registros del historial y generamos una fila para cada uno -->
+                <% data.forEach(function(historial) { %>
+                    <tr>
+                        <td><%= historial.id %></td>
+                        <td><%= historial.cita_id %></td>
+                        <td><%= historial.fecha %></td>
+                        <td><%= historial.hora %></td>
+                        <td><%= historial.paciente_id %></td>
+                        <td><%= historial.medico_id %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <!-- Si no hay registros en el historial, mostramos un mensaje -->
+    <% } else { %>
+        <p>No hay historial disponible.</p>
+    <% } %>
+    <!-- Botón para volver a la ventana principal -->
+    <div class="button-container"> 
+        <a class="button" href="/">Ventana Principal</a> 
+    </div>
+</body>
+</html>
